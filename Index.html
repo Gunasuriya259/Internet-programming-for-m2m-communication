@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Index Style.css" />
+  <title>Task Tracker</title>
+  <script>
+    function Logout() {
+      document.cookie = "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+      window.location.href="Login.html";
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Task Tracker Web Application</h1>
+
+  <form id="form" method="post" action="Save_Tasks.php">
+    <input type="text" class="input" name="task" placeholder="Enter Tasks" autocomplete="off">
+
+    <center>
+      <input style="margin: 20px" type="submit" class="save" id="save" value="Save Task">
+    </center>
+  </form>
+
+  <small>
+    Click Left Mouse Button For Striking Out Tasks Completed.
+    <br>
+    Click Right Mouse Button Delete Mentioned Tasks.
+  </small>
+  <a style="color: white;margin: 20px; padding: 5px; background-color: blue;" href="Display_User_Tasks.php">View Saved Tasks</a>
+  <input style="color: white;margin: 20px; padding: 5px; background-color: blue;" type="button" value="Logout" onclick="Logout()">
+</body>
+
+</html>

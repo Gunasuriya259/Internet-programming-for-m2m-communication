@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: darkviolet;
+  color: darkslategray;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: lawngreen;
+  font-size: 75px;
+  text-align: center;
+  padding: 40px;
+  border: 5px double lawngreen;
+}
+
+form {
+  max-width: 100%;
+  width: 400px;
+  margin-top: 20px;
+  padding: 50px;
+  border: 5px double lawngreen;
+}
+
+.input {
+  border: none;
+  color: lightslategray;
+  font-size: 32px;
+  padding: 16px 32px;
+  display: block;
+  width: 100%;
+}
+
+.input::placeholder {
+  text-align: center;
+  color: lightslategray;
+}
+
+.input:focus {
+  outline-color: purple;
+}
+
+.clear {
+  color: darkslategray;
+  height: 50px;
+  width: 200px;
+  font-size: 16px;
+  background: white;
+  border: none;
+  margin-top: 70px;
+  border-radius: 20px 0 20px 0;
+}
+
+.todos {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.todos li {
+  border-top: 1px solid silver;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 16px 32px;
+}
+
+.todos li.completed {
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+small {
+  color: lightgray;
+  margin-top: 50px;
+  text-align: center;
+}

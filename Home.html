@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>
+        Task Tracker Application
+    </title>
+    <style>
+        body {
+            background: darkviolet;
+        }
+
+        button {
+            font-size: 10px;
+            font-variant: small-caps;
+            color: red;
+            border: transparent;
+            background-color: transparent;
+            font-size: large;
+        }
+
+        .Navbar {
+            height: 40px;
+            width: 1200px;
+            display: flex;
+            margin: auto;
+            margin-top: 25px;
+            border: 1px solid;
+            border-radius: 50px;
+            align-items: center;
+            justify-content: center;
+            font-variant: small-caps;
+            background: linear-gradient(to left, #3FEEE6, #CAFAFE);
+        }
+
+        .Box {
+            display: flex;
+            width: auto;
+            height: auto;
+            margin: 15px;
+            padding: 15px;
+            border: 5px double transparent;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Box_1 {
+            width: 600px;
+            height: auto;
+            margin: 15px;
+            padding: 15px;
+            border: transparent;
+            text-align: justify;
+        }
+
+        .Box_2 {
+            width: 900px;
+            height: auto;
+            margin: 20px;
+            margin-right: 200px;
+            padding: 15px;
+            border: 1px solid;
+            text-align: left;
+        }
+
+        img {
+            margin: auto;
+            display: block;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Navbar">
+        <button style="margin-left: 600px; font-size: medium;" onclick="One()">Create Account</button>
+        <button style="margin-left: 30px; font-size: medium" onclick="Two()">Login</button>
+        <button style="margin-left: 30px; font-size: medium" onclick="Three()">Contact</button>
+        <button style="margin-left: 30px; font-size: medium" onclick="Delete()">Delete Account</button>
+    </div>
+
+    <div class="Box">
+        <div class="Box_1">
+            <img src="Task Tracker.webp" height="500px" width="auto">
+        </div>
+        <div class="Box_2">
+            <div style="color: gold;">
+                <h1 style="font-variant: small-caps; color: #3FEEE6;">Task Tracker Web Application</h1>
+
+                <h2 style="font-variant: small-caps; color: #3FEEE6;">Registration:</h2>
+
+                <ul>Start by registering an account. Click on the "Create Account" to get Started.</ul>
+                <ul>Fill in the required details: username, password, and email.</ul>
+                <ul>Click the "Save Task" button to register your account.</ul>
+                
+                <h2 style="font-variant: small-caps; color: #3FEEE6;">Saving Tasks:</h2>
+                <ul>After registration, you'll be redirected to a page where you can save tasks.</ul>
+                <ul>Enter a task in the input field and click the "Save Task" button.</ul>
+                <ul>The tasks you save will be associated with your account.<br></ul>
+                
+                <h2 style="font-variant: small-caps; color: #3FEEE6;">Viewing Tasks:</h2>
+                <ul>To view your saved tasks, click the "View Tasks" button.</ul>
+                <ul>You will be redirected</ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function One() {
+            window.location.href = "Register.html";
+        }
+        function Two() {
+            window.location.href = "Login.html";
+        }
+        function Three() {
+            window.location.href = "Contact.html";
+        }
+        function Delete() {
+            window.location.href = "Delete_User.html";
+        }
+    </script>
+</body>
+
+</html>

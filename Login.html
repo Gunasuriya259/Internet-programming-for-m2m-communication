@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="Login Style.css">
+</head>
+
+<body>
+    <div class="Bounce">
+        <h1 style="font-variant: small-caps;">Welcome Back! Your Presence Brightens Our Login Page</h1>
+    </div>
+
+    <form>
+        <fieldset>
+            <legend><img style="margin-top:20px; padding: 10px; border: 5px double; border-radius: 50px;" src="User Logo.png" height="20px"></legend>
+            <div style="margin-top: 25px" class="Box">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+            <br>
+
+            <div class="Box">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <br>
+        </fieldset>
+    </form>
+
+    <button type="button" onclick="validateLogin()">Login</button>
+
+    <p onclick="Register()" style="color: lawngreen; font-weight:bold; display: block; margin: auto; margin-top: 25px; width: fit-content;font-weight: normal ; font-variant: small-caps;">Haven't Registered Yet? Click Here To Register</p>
+
+    <script>
+        function validateLogin() {
+            // Get input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            // Simple validation
+            if (username === "" || password === "") {
+                alert("Please Fill The Fields Username And Password");
+            } else {
+                authenticateUser(username, password);
+            }
+        }
+    
+        function authenticateUser(username, password) {
+            // Make an AJAX request to the server for authentication
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Successfully authenticated
+                        welcomeUser(username);
+                        window.location.href = "Index.html";
+                    } else {
+                        // Authentication failed
+                        alert("Login failed. Please check your username and password.");
+                    }
+                }
+            };
+    
+            xhr.open("GET", "login.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("username=" + username + "&password=" + password);
+        }
+    
+        function getRandomGreeting() {
+            var greetings = ["Hello", "Hi", "Hey", "Greetings"];
+            var randomIndex = Math.floor(Math.random() * greetings.length);
+            return greetings[randomIndex];
+        }
+    
+        function welcomeUser(username) {
+            var greeting = getRandomGreeting();
+            alert(greeting + ", " + username + "!" + "\nLogin Successful!");
+        }
+
+        function Register() {
+            window.location.href="Register.html";
+        }
+    </script>
+
+</body>
+
+</html>

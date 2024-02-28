@@ -1,0 +1,191 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<html>
+<head>
+    <meta content="width=device-width">
+    <title>User Registration</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: darkviolet;
+        }
+
+        h1 {
+            padding: 20px;
+            margin-top: 50px;
+            color: #3FEEE6;
+        }
+
+        form {
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+            font-size: 20px;
+            padding: 40px;
+            width: 400px;
+            height: fit-content;
+            background: white;
+            border: 5px solid lawngreen;
+            border-radius: 50px;
+        }
+
+        .Box {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 10px;
+
+        }
+
+        label {
+            font-variant: small-caps;
+            font-size: small;
+            padding: 10px;
+            flex: 0 0 90px;
+            margin-right: 10px;
+        }
+
+        input {
+            text-align: center;
+            font-family: "Times New Roman";
+            font-size: small;
+            width: 200px;
+            background-color: lightgrey;
+            padding: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 0 15px 0 15px;
+        }
+
+        button {
+            font-variant: small-caps;
+            background: blue;
+            color: white;
+            height: 50px;
+            width: 100px;
+            margin-top: 50px;
+        }
+
+        .Line {
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .Bounce {
+            height: 75px;
+            overflow: hidden;
+            position: relative;
+            justify-content: center;
+        }
+
+        .Bounce h1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
+            animation: bouncing-text 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bouncing-text {
+            0% {
+                transform: translateX(15%);
+            }
+
+            100% {
+                transform: translateX(-20%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 25px; padding: 20px" class="Bounce">
+        <h1 style="font-variant: small-caps;">Welcome We're Delighted To Have You Here!</h1>
+    </div>
+
+    <form>
+        <div style="margin-top: 20px" method="post" class="Box">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="email">Mail</label>
+            <input type="email" id="email" name="email" placeholder="Enter Mail" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="password">Confirm Password</label>
+            <input type="password" id="repass" name="repass" placeholder="Enter Password Again" required>
+        </div>
+        <br>
+
+    </form>
+
+    <button type="button" onclick="validateRegistration()">Register</button>
+    <div style="margin-top: 25px;" class="Line">
+        <p style="font-variant:small-caps; color: lawngreen" onclick="Login()">Already Having Account? Click Here To
+            Login</p>
+    </div>
+
+    <script>
+        function validateRegistration() {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var repass = document.getElementById('repass').value;
+
+            if (password != repass) {
+                alert("Please Ensure Whether Passwords Given Are Similar")
+            } else if (!isValidEmail(email)) {
+                alert("Please enter a valid email address.");
+            } else if (!isValidUsername(username)) {
+                alert("Please enter a valid username.");
+            } else {
+                // Make an AJAX request to the PHP script
+                $.ajax({
+                    type: "GET",
+                    url: "save_user.php",
+                    data: {
+                        username: username,
+                        password: password,
+                        email: email
+                    },
+                    success: function (response) {
+                        alert(response);
+                        window.location.href = "Login.html";
+                    },
+                    error: function (error) {
+                        alert("Error: " + error);
+                    }
+                });
+            }
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidUsername(username) {
+            var usernameRegex = /^[A-Z]{1}[a-z]*((\s|-)[A-Z]{1}[a-z]*)*$/;
+            return usernameRegex.test(username);
+        }
+
+        function Login() {
+            window.location.href="Login.html";
+        }
+    </script>
+
+</html>
